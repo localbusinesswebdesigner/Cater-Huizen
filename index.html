@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cater Huizen - Premium Spitbraai & Catering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --navy: #1E2A38;
+            --gold: #C6A96C;
+            --cream: #F8F5F0;
+            --gray: #5C6670;
+            --white: #FFFFFF;
+            --dark-navy: #151E28;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            color: var(--gold);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        nav a:hover {
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(30, 42, 56, 0.8), rgba(30, 42, 56, 0.8)), url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdyaWxsZWQlMjBtZWF0JTIwcHJvZmVzc2lvbmFsfGVufDB8fDB8fHww&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--cream);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--cream);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--navy);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+            margin: 15px auto;
+        }
+        
+        /* Menu Section */
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .menu-category {
+            background: var(--white);
+            border-radius: 6px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--gold);
+        }
+        
+        .menu-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-category h3 {
+            color: var(--navy);
+            margin-bottom: 25px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .menu-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .menu-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--gold);
+        }
+        
+        .menu-item-content {
+            flex: 1;
+        }
+        
+        .menu-item h4 {
+            color: var(--dark-navy);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .menu-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--navy);
+            color: var(--white);
+        }
+        
+        .gallery-title {
+            color: var(--gold);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            height: 280px;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Promise Section */
+        .promise-section {
+            text-align: center;
+            margin: 50px 0;
+            padding: 60px;
+            background-color: var(--navy);
+            color: var(--white);
+            border-radius: 6px;
+        }
+        
+        .promise-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .promise-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--cream);
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .contact-info a {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 10px;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a:hover {
+            color: var(--gold);
+        }
+        
+        .social-links {
+            margin-top: 30px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: var(--navy);
+            color: var(--gold);
+            border-radius: 4px;
+            line-height: 50px;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-navy);
+            color: var(--cream);
+            padding: 50px 0 30px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>CATER HUIZEN</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>PREMIUM SPITBRAAI & CATERING</h1>
+            <p>Exquisite flavors for your most memorable events</p>
+            <a href="#contact" class="btn">Book Your Event</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Explore our premium spitbraai options and gourmet accompaniments</p>
+            
+            <div class="menu-container">
+                <!-- Spitbraai Section -->
+                <div class="menu-category">
+                    <h3>Spitbraai Specialties</h3>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Beef Spitbraai</h4>
+                            <p>Premium cuts roasted to perfection</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Lamb Spitbraai</h4>
+                            <p>Tender lamb with authentic seasoning</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Pork Spitbraai</h4>
+                            <p>Juicy pork with crispy skin</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Chicken Spitbraai</h4>
+                            <p>Whole chicken with special herbs</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Salads Section -->
+                <div class="menu-category">
+                    <h3>Gourmet Salads</h3>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-carrot"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Creamy Potato Salad</h4>
+                            <p>Classic favorite with creamy dressing</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-carrot"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Greek Salad</h4>
+                            <p>Traditional Mediterranean flavors</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-carrot"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Three Bean Salad</h4>
+                            <p>Protein-packed bean combination</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-carrot"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Coleslaw</h4>
+                            <p>Crunchy cabbage and carrot mix</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sides & Extras -->
+                <div class="menu-category">
+                    <h3>Sides & Accompaniments</h3>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-bread-slice"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Garlic Bread</h4>
+                            <p>Artisan bread with garlic butter</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-bread-slice"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Fresh Rolls</h4>
+                            <p>Assorted fresh bread rolls</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-cheese"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Cheese Grillies</h4>
+                            <p>Gourmet grilled cheese sandwiches</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-cheese"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Cheese & Bread Table</h4>
+                            <p>Selection of fine cheeses with artisanal breads</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="promise-section">
+                <h3>Our Commitment</h3>
+                <p>EXCEPTIONAL QUALITY · PREMIUM INGREDIENTS · PROFESSIONAL SERVICE</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services" style="background-color: #f0f0f0;">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="menu-container">
+                <div class="menu-category">
+                    <h3>Event Types</h3>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Weddings</h4>
+                            <p>Elegant catering for your special day</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Private Events</h4>
+                            <p>Birthdays, anniversaries, and celebrations</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Corporate Functions</h4>
+                            <p>Professional catering for business events</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3>Additional Services</h3>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Table Decor</h4>
+                            <p>Elegant table settings and presentation</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-concierge-bell"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Full Service</h4>
+                            <p>Complete setup, serving, and cleanup</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-icon">
+                            <i class="fas fa-cheese"></i>
+                        </div>
+                        <div class="menu-item-content">
+                            <h4>Cheese & Charcuterie</h4>
+                            <p>Artisanal cheese and meat boards</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title gallery-title">Our Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdyaWxsZWQlMjBtZWF0JTIwcHJvZmVzc2lvbmFsfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=80" alt="Grilled Meat">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c3BpdGJyYWFpfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=80" alt="Spitbraai">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGdyaWxsZWQlMjBtZWF0JTIwcHJvZmVzc2lvbmFsfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=80" alt="Barbecue">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FsYWQlMjBwcm9mZXNzaW9uYWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=80" alt="Fresh Salads">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZCUyMHByZXNlbnRhdGlvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Food Presentation">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i0.wp.com/boksomdaais.co.za/wp-content/uploads/2024/04/First-Trip-Around-the-Sun-Party-20240224-6-1024x683.jpg?ssl=1" alt="Dessert Table">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hlZXNlJTIwYm9hcmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=80" alt="Cheese Board">
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/jpeg;base64,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" alt="Brai">
+         
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-info">
+                <p>Reach out to discuss your event and catering needs:</p>
+                <p><a href="tel:0622145076"><i class="fas fa-phone"></i> 062 214 5076</a></p>
+                <p><a href="mailto:cater.huizen@gmail.com"><i class="fas fa-envelope"></i> cater.huizen@gmail.com</a></p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-google"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+                
+                <a href="tel:0622145076" class="btn">Call to Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">CATER HUIZEN</div>
+            <p>Premium Spitbraai & Catering Services</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2023 Cater Huizen. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
